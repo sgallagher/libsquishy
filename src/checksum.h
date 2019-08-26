@@ -36,7 +36,7 @@ extern "C" {
 
 /** Checksum context.
  */
-typedef struct _cr_ChecksumCtx cr_ChecksumCtx;
+typedef struct _sq_ChecksumCtx sq_ChecksumCtx;
 
 /**
  * Enum of supported checksum types.
@@ -44,30 +44,30 @@ typedef struct _cr_ChecksumCtx cr_ChecksumCtx;
  * is for the compatibility with original createrepo.
  */
 typedef enum {
-    CR_CHECKSUM_UNKNOWN,    /*!< Unknown checksum */
-//    CR_CHECKSUM_MD2,        /*!< MD2 checksum */
-    CR_CHECKSUM_MD5,        /*!< MD5 checksum */
-    CR_CHECKSUM_SHA,        /*!< SHA checksum */
-    CR_CHECKSUM_SHA1,       /*!< SHA1 checksum */
-    CR_CHECKSUM_SHA224,     /*!< SHA224 checksum */
-    CR_CHECKSUM_SHA256,     /*!< SHA256 checksum */
-    CR_CHECKSUM_SHA384,     /*!< SHA384 checksum */
-    CR_CHECKSUM_SHA512,     /*!< SHA512 checksum */
-    CR_CHECKSUM_SENTINEL,   /*!< sentinel of the list */
-} cr_ChecksumType;
+    SQ_CHECKSUM_UNKNOWN,    /*!< Unknown checksum */
+//    SQ_CHECKSUM_MD2,        /*!< MD2 checksum */
+    SQ_CHECKSUM_MD5,        /*!< MD5 checksum */
+    SQ_CHECKSUM_SHA,        /*!< SHA checksum */
+    SQ_CHECKSUM_SHA1,       /*!< SHA1 checksum */
+    SQ_CHECKSUM_SHA224,     /*!< SHA224 checksum */
+    SQ_CHECKSUM_SHA256,     /*!< SHA256 checksum */
+    SQ_CHECKSUM_SHA384,     /*!< SHA384 checksum */
+    SQ_CHECKSUM_SHA512,     /*!< SHA512 checksum */
+    SQ_CHECKSUM_SENTINEL,   /*!< sentinel of the list */
+} sq_ChecksumType;
 
 /** Return checksum name.
  * @param type          checksum type
  * @return              constant null terminated string with checksum name
  *                      or NULL on error
  */
-const char *cr_checksum_name_str(cr_ChecksumType type);
+const char *sq_checksum_name_str(sq_ChecksumType type);
 
 /** Return checksum type.
  * @param name          checksum name
  * @return              checksum type
  */
-cr_ChecksumType cr_checksum_type(const char *name);
+sq_ChecksumType sq_checksum_type(const char *name);
 
 /** Compute file checksum.
  * @param filename      filename
@@ -76,25 +76,25 @@ cr_ChecksumType cr_checksum_type(const char *name);
  * @return              malloced null terminated string with checksum
  *                      or NULL on error
  */
-char *cr_checksum_file(const char *filename,
-                       cr_ChecksumType type,
+char *sq_checksum_file(const char *filename,
+                       sq_ChecksumType type,
                        GError **err);
 
 /** Create new checksum context.
  * @param type      Checksum algorithm of the new checksum context.
  * @param err       GError **
- * @return          cr_ChecksumCtx or NULL on error
+ * @return          sq_ChecksumCtx or NULL on error
  */
-cr_ChecksumCtx *cr_checksum_new(cr_ChecksumType type, GError **err);
+sq_ChecksumCtx *sq_checksum_new(sq_ChecksumType type, GError **err);
 
 /** Feeds data into the checksum.
  * @param ctx       Checksum context.
  * @param buf       Pointer to the data.
  * @param len       Length of the data.
  * @param err       GError **
- * @return          cr_Error code.
+ * @return          sq_Error code.
  */
-int cr_checksum_update(cr_ChecksumCtx *ctx,
+int sq_checksum_update(sq_ChecksumCtx *ctx,
                        const void *buf,
                        size_t len,
                        GError **err);
@@ -105,7 +105,7 @@ int cr_checksum_update(cr_ChecksumCtx *ctx,
  * @param err       GError **
  * @return          Checksum string or NULL on error.
  */
-char *cr_checksum_final(cr_ChecksumCtx *ctx, GError **err);
+char *sq_checksum_final(sq_ChecksumCtx *ctx, GError **err);
 
 /** @} */
 

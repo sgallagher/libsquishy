@@ -17,96 +17,96 @@
  * USA.
  */
 
-#ifndef __C_CREATEREPOLIB_ERROR_H__
-#define __C_CREATEREPOLIB_ERROR_H__
+#ifndef __C_SQUISHY_ERROR_H__
+#define __C_SQUISHY_ERROR_H__
 
 #include <glib.h>
 
 /* Error codes */
 typedef enum {
-    CRE_OK,     /*!<
+    SQE_OK,     /*!<
         (0) No error */
-    CRE_ERROR, /*!<
+    SQE_ERROR, /*!<
         (1) No specified error */
-    CRE_IO,     /*!<
+    SQE_IO,     /*!<
         (2) Input/Output error (cannot open file, etc.) */
-    CRE_MEMORY, /*!<
+    SQE_MEMORY, /*!<
         (3) Cannot allocate memory */
-    CRE_STAT, /*!<
+    SQE_STAT, /*!<
         (4) Stat() call failed */
-    CRE_DB,     /*!<
+    SQE_DB,     /*!<
         (5) A database error */
-    CRE_BADARG, /*!<
+    SQE_BADARG, /*!<
         (6) At least one argument of function is bad or non complete */
-    CRE_NOFILE, /*!<
+    SQE_NOFILE, /*!<
         (7) File doesn't exist */
-    CRE_NODIR, /*!<
+    SQE_NODIR, /*!<
         (8) Directory doesn't exist (not a dir or path doesn't exists) */
-    CRE_EXISTS, /*!<
+    SQE_EXISTS, /*!<
         (9) File/Directory already exists */
-    CRE_UNKNOWNCHECKSUMTYPE, /*!<
+    SQE_UNKNOWNCHECKSUMTYPE, /*!<
         (10) Unknown/Unsupported checksum type */
-    CRE_UNKNOWNCOMPRESSION, /*!<
+    SQE_UNKNOWNCOMPRESSION, /*!<
         (11) Unknown/Unsupported compression type */
-    CRE_XMLPARSER, /*!<
+    SQE_XMLPARSER, /*!<
         (12) XML parser error (non valid xml, corrupted xml,  ..) */
-    CRE_XMLDATA, /*!<
+    SQE_XMLDATA, /*!<
         (13) Loaded xml metadata are bad */
-    CRE_CBINTERRUPTED, /*!<
+    SQE_CBINTERRUPTED, /*!<
         (14) Interrupted by callback. */
-    CRE_BADXMLPRIMARY, /*!<
+    SQE_BADXMLPRIMARY, /*!<
         (15) Bad filelists.xml file */
-    CRE_BADXMLFILELISTS, /*!<
+    SQE_BADXMLFILELISTS, /*!<
         (16) Bad filelists.xml file */
-    CRE_BADXMLOTHER, /*!<
+    SQE_BADXMLOTHER, /*!<
         (17) Bad filelists.xml file */
-    CRE_BADXMLREPOMD, /*!<
+    SQE_BADXMLREPOMD, /*!<
         (18) Bad repomd.xml file */
-    CRE_MAGIC, /*!<
+    SQE_MAGIC, /*!<
         (19) Magic Number Recognition Library (libmagic) error */
-    CRE_GZ, /*!<
+    SQE_GZ, /*!<
         (20) Gzip library related error */
-    CRE_BZ2, /*!<
+    SQE_BZ2, /*!<
         (21) Bzip2 library related error */
-    CRE_XZ, /*!<
+    SQE_XZ, /*!<
         (22) Xz (lzma) library related error */
-    CRE_OPENSSL, /*!<
+    SQE_OPENSSL, /*!<
         (23) OpenSSL library related error */
-    CRE_CURL, /*!<
+    SQE_CURL, /*!<
         (24) Curl library related error */
-    CRE_ASSERT, /*!<
+    SQE_ASSERT, /*!<
         (25) Ideally this error should never happend. Nevertheless if
         it happend, probable reason is that some values of createrepo_c
         object was changed (by you - a programmer) in a bad way */
-    CRE_BADCMDARG, /*!<
+    SQE_BADCMDARG, /*!<
         (26) Bad command line argument(s) */
-    CRE_SPAWNERRCODE, /*!<
+    SQE_SPAWNERRCODE, /*!<
         (27) Child process exited with error code != 0 */
-    CRE_SPAWNKILLED, /*!<
+    SQE_SPAWNKILLED, /*!<
         (28) Child process killed by signal */
-    CRE_SPAWNSTOPED, /*!<
+    SQE_SPAWNSTOPED, /*!<
         (29) Child process stopped by signal */
-    CRE_SPAWNABNORMAL, /*!<
+    SQE_SPAWNABNORMAL, /*!<
         (30) Child process exited abnormally */
-    CRE_DELTARPM, /*!<
+    SQE_DELTARPM, /*!<
         (31) Deltarpm related error */
-    CRE_BADXMLUPDATEINFO, /*!<
+    SQE_BADXMLUPDATEINFO, /*!<
         (32) Bad updateinfo.xml file */
-    CRE_SIGPROCMASK, /*!<
+    SQE_SIGPROCMASK, /*!<
         (33) Cannot change blocked signals */
-    CRE_ZCK, /*!<
+    SQE_ZCK, /*!<
         (34) ZCK library related error */
-    CRE_MODULEMD, /*!<
+    SQE_MODULEMD, /*!<
         (35) modulemd related error */
-    CRE_SENTINEL, /*!<
+    SQE_SENTINEL, /*!<
         (XX) Sentinel */
-} cr_Error;
+} sq_Error;
 
-/** Converts cr_Error return code to error string.
- * @param rc        cr_Error return code
+/** Converts sq_Error return code to error string.
+ * @param rc        sq_Error return code
  * @return          Error string
  */
-const char *cr_strerror(cr_Error rc);
+const char *sq_strerror(sq_Error rc);
 
 /* Error domains */
 #define CREATEREPO_C_ERROR              createrepo_c_error_quark()

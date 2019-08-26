@@ -20,70 +20,70 @@
 #include "error.h"
 
 const char *
-cr_strerror(cr_Error rc)
+sq_strerror(sq_Error rc)
 {
     switch (rc) {
-        case CRE_OK:
+        case SQE_OK:
             return "No error";
-        case CRE_ERROR:
+        case SQE_ERROR:
             return "No specified error";
-        case CRE_IO:
+        case SQE_IO:
             return "Input/Output error";
-        case CRE_MEMORY:
+        case SQE_MEMORY:
             return "Out of memory";
-        case CRE_STAT:
+        case SQE_STAT:
             return "stat() system call failed";
-        case CRE_DB:
+        case SQE_DB:
             return "Database error";
-        case CRE_BADARG:
+        case SQE_BADARG:
             return "Bad function argument(s)";
-        case CRE_NOFILE:
+        case SQE_NOFILE:
             return "File doesn't exist";
-        case CRE_NODIR:
+        case SQE_NODIR:
             return "Directory doesn't exist";
-        case CRE_EXISTS:
+        case SQE_EXISTS:
             return "File/Directory already exists";
-        case CRE_UNKNOWNCHECKSUMTYPE:
+        case SQE_UNKNOWNCHECKSUMTYPE:
             return "Unknown/Unsupported checksum type";
-        case CRE_UNKNOWNCOMPRESSION:
+        case SQE_UNKNOWNCOMPRESSION:
             return "Unknown/Usupported compression";
-        case CRE_XMLPARSER:
+        case SQE_XMLPARSER:
             return "Error while parsing XML";
-        case CRE_XMLDATA:
+        case SQE_XMLDATA:
             return "Loaded XML data are bad";
-        case CRE_CBINTERRUPTED:
+        case SQE_CBINTERRUPTED:
             return "Interrupted by callback";
-        case CRE_BADXMLPRIMARY:
+        case SQE_BADXMLPRIMARY:
             return "Bad primary XML";
-        case CRE_BADXMLFILELISTS:
+        case SQE_BADXMLFILELISTS:
             return "Bad filelists XML";
-        case CRE_BADXMLOTHER:
+        case SQE_BADXMLOTHER:
             return "Bad other XML";
-        case CRE_MAGIC:
+        case SQE_MAGIC:
             return "Magic Number Recognition Library (libmagic) error";
-        case CRE_GZ:
+        case SQE_GZ:
             return "Gzip library related error";
-        case CRE_BZ2:
+        case SQE_BZ2:
             return "Bzip2 library related error";
-        case CRE_XZ:
+        case SQE_XZ:
             return "XZ (lzma) library related error";
-        case CRE_OPENSSL:
+        case SQE_OPENSSL:
             return "OpenSSL library related error";
-        case CRE_CURL:
+        case SQE_CURL:
             return "Curl library related error";
-        case CRE_ASSERT:
+        case SQE_ASSERT:
             return "Assert error";
-        case CRE_BADCMDARG:
+        case SQE_BADCMDARG:
             return "Bad command line argument(s)";
-        case CRE_SPAWNERRCODE:
+        case SQE_SPAWNERRCODE:
             return "Child process exited with error code != 0";
-        case CRE_SPAWNKILLED:
+        case SQE_SPAWNKILLED:
             return "Child process killed by signal";
-        case CRE_SPAWNSTOPED:
+        case SQE_SPAWNSTOPED:
             return "Child process stopped by signal";
-        case CRE_SPAWNABNORMAL:
+        case SQE_SPAWNABNORMAL:
             return "Child process exited abnormally";
-        case CRE_DELTARPM:
+        case SQE_DELTARPM:
             return "Deltarpm error";
         default:
             return "Unknown error";
