@@ -40,7 +40,12 @@ libcrypto = dependency('libcrypto')
 lzma = dependency('liblzma')
 magic = c.find_library('magic')
 zlib = dependency('zlib')
-zstd = dependency('libzstd', required: false)
+
+with_zchunk = get_option('with_zchunk')
+
+if with_zchunk
+  zchunk = dependency('zck')
+endif
 
 squishy_reqs = [
   bzip2,
@@ -50,11 +55,20 @@ squishy_reqs = [
   zlib,
 ]
 
-if zstd.found()
-  squishy_reqs += [ zstd ]
+if with_zchunk
+  squishy_reqs += [ zchunk ]
 endif
 
 squishy_deps = squishy_reqs + [magic]
+
+optional_conf = configuration_data()
+optional_conf.set('WITH_ZCHUNK', with_zchunk)
+
+configure_file(
+  output: 'config.h',
+  configuration: optional_conf,
+)
+
 
 squishy_lib = shared_library('squishy',
   squishy_sources,
