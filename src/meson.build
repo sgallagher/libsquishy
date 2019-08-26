@@ -84,8 +84,8 @@ pkg = import('pkgconfig')
 pkg.generate(
   description: 'A library for working with compressed files',
   libraries: squishy_lib,
-  name: 'squishy',
-  filebase: 'squishy-' + api_version,
+  name: 'libsquishy',
+  filebase: 'libsquishy-' + api_version,
   version: meson.project_version(),
   subdirs: header_subdir,
   requires_private: squishy_reqs,
