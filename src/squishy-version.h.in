@@ -1,0 +1,98 @@
+/* squishy-version.h.in
+ *
+ * Copyright 2019 Stephen Gallagher
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+
+#ifndef SQUISHY_VERSION_H
+#define SQUISHY_VERSION_H
+
+#if !defined(SQUISHY_INSIDE) && !defined(SQUISHY_COMPILATION)
+# error "Only <squishy.h> can be included directly."
+#endif
+
+/**
+ * SECTION:squishyversion
+ * @short_description: squishy version checking
+ *
+ * squishy provides macros to check the version of the library
+ * at compile-time
+ */
+
+/**
+ * SQUISHY_MAJOR_VERSION:
+ *
+ * squishy major version component (e.g. 1 if %SQUISHY_VERSION is 1.2.3)
+ */
+#define SQUISHY_MAJOR_VERSION (@MAJOR_VERSION@)
+
+/**
+ * SQUISHY_MINOR_VERSION:
+ *
+ * squishy minor version component (e.g. 2 if %SQUISHY_VERSION is 1.2.3)
+ */
+#define SQUISHY_MINOR_VERSION (@MINOR_VERSION@)
+
+/**
+ * SQUISHY_MICRO_VERSION:
+ *
+ * squishy micro version component (e.g. 3 if %SQUISHY_VERSION is 1.2.3)
+ */
+#define SQUISHY_MICRO_VERSION (@MICRO_VERSION@)
+
+/**
+ * SQUISHY_VERSION
+ *
+ * squishy version.
+ */
+#define SQUISHY_VERSION (@VERSION@)
+
+/**
+ * SQUISHY_VERSION_S:
+ *
+ * squishy version, encoded as a string, useful for printing and
+ * concatenation.
+ */
+#define SQUISHY_VERSION_S "@VERSION@"
+
+#define SQUISHY_ENCODE_VERSION(major,minor,micro) \
+        ((major) << 24 | (minor) << 16 | (micro) << 8)
+
+/**
+ * SQUISHY_VERSION_HEX:
+ *
+ * squishy version, encoded as an hexadecimal number, useful for
+ * integer comparisons.
+ */
+#define SQUISHY_VERSION_HEX \
+        (SQUISHY_ENCODE_VERSION (SQUISHY_MAJOR_VERSION, SQUISHY_MINOR_VERSION, SQUISHY_MICRO_VERSION))
+
+/**
+ * SQUISHY_CHECK_VERSION:
+ * @major: required major version
+ * @minor: required minor version
+ * @micro: required micro version
+ *
+ * Compile-time version checking. Evaluates to %TRUE if the version
+ * of squishy is greater than the required one.
+ */
+#define SQUISHY_CHECK_VERSION(major,minor,micro)   \
+        (SQUISHY_MAJOR_VERSION > (major) || \
+         (SQUISHY_MAJOR_VERSION == (major) && SQUISHY_MINOR_VERSION > (minor)) || \
+         (SQUISHY_MAJOR_VERSION == (major) && SQUISHY_MINOR_VERSION == (minor) && \
+          SQUISHY_MICRO_VERSION >= (micro)))
+
+#endif /* SQUISHY_VERSION_H */
